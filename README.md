@@ -8,6 +8,29 @@
 - 分区边界
 - 生命周期执行
 - 回收核验
+- 分段汇集（乱序送达、幂等回执、缺段/冲突账簿、封存与整批回放）
+
+### 分段汇集接口
+
+| 方法与路径 | 说明 |
+|---|---|
+| `POST /ingestion/batches` | 按登记点和分段总数建立汇集批次（经办员） |
+| `POST /ingestion/batches/{id}/segments` | 送达一段凭条并取回执；重复送达幂等，封存后迟到返回 409 并登记拒收 |
+| `GET /ingestion/batches/{id}/ledger` | 账簿：缺哪段、哪笔同号日期冲突及来源段、何时可回放、拒收记录 |
+| `POST /ingestion/batches/{id}/seal` | 收齐且无冲突才封存为不可变整批 |
+| `POST /ingestion/batches/{id}/replay` | 只回放封存整批，幂等；报告含被拒收的迟到片段 |
+| `GET /ingestion/batches`、`GET /ingestion/replays` | 批次与回放记录列表 |
+
+规则细节见 [BUSINESS.md](BUSINESS.md) 的「入园凭条分段汇集」。
+
+### 后端测试
+
+测试用 SQLite 内存库 + FastAPI TestClient，不依赖 Docker/PostgreSQL：
+
+```sh
+cd backend
+python -m unittest discover -s tests        # 纯领域规则、服务层幂等/并发、API 端到端
+```
 
 ## 本地运行
 

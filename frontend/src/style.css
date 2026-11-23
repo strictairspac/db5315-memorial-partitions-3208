@@ -70,6 +70,16 @@ td { border-top:1px solid var(--line); min-width: 3.3rem; max-width: 35ch; }
 .status { display:inline-block; border:1px solid var(--line); padding:.05em .55em; border-radius:var(--radius); white-space:nowrap; font-size:.88em; }
 .status[data-state='complete'] { color: oklch(.35 .09 150); border-color: oklch(.78 .11 151); }
 .status[data-state='failed'],.error { color: oklch(.36 .15 27); background: oklch(.94 .045 26); }
+.status[data-state='sealed'] { color: oklch(.34 .09 250); border-color: oklch(.75 .1 250); background: oklch(.96 .03 250); }
+.status[data-state='gathering'] { color: oklch(.38 .08 85); border-color: oklch(.8 .1 85); }
+.status[data-state='conflict'] { color: oklch(.36 .15 27); border-color: oklch(.7 .13 27); background: oklch(.95 .04 26); }
+.inline-form { display:flex; flex-wrap:wrap; gap:.8rem; align-items:end; margin-top:1rem; }
+.inline-form label { display:flex; flex-direction:column; gap:.3rem; font-weight:600; font-size:.9em; }
+.inline-form input,.inline-form select { min-width:9rem; }
+.segment-form { margin-top:1.1rem; padding:1rem; background:var(--soft); border-top:var(--rule) solid var(--line); }
+.segment-form label { display:block; margin-bottom:.7rem; font-weight:600; font-size:.9em; }
+.segment-form textarea { width:100%; font-family:monospace; }
+.brief .metrics dd { font-size:1.05rem; }
 .error { padding:.7rem .9rem; margin-bottom:1rem; border-inline-start:3px solid currentColor; }
 .empty { margin:0; padding:1.3rem; color:var(--muted); background:var(--soft); }
 summary { cursor:pointer; font-weight:600; color:var(--accent-dark); }

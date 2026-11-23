@@ -1,5 +1,6 @@
 export const state = {session: JSON.parse(sessionStorage.getItem('demo-session') || 'null'), spec:null,
-                      cases:[], runs:[], evidence:[], audit:[], draft:null};
+                      cases:[], runs:[], evidence:[], audit:[], draft:null,
+                      ingestionBatches:[], ingestionReplays:[], ingestionLedger:null, segmentReceipt:null};
 
 export function setSession(session) {
   state.session = session;

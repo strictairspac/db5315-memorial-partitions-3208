@@ -1,0 +1,4 @@
+# 测试专用依赖。运行时依赖见 requirements.txt。
+# FastAPI 的 TestClient 基于 httpx。
+-r requirements.txt
+httpx==0.28.1
